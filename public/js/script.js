@@ -820,7 +820,7 @@ $(document).ready(function() {
 
 			date.setDate(date.getDate() + 1);
 			// Create new variable to search database
-			var setDate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
+			var setDate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + "12";
 			// Create new query with new search date
 			var query = {'departcity': dptCity, 'arrivalcity': arrCity, 'date': setDate, $sort: {price: 1}, $limit: 1};
 			// If in the middle of the pricebar, append a box with the class 'selected'.
@@ -1053,7 +1053,7 @@ $(document).ready(function() {
 	// following function and refresh the page. Don't forget to re-comment this line after or
 	// you'll add 10 new flights on every new page refresh.
 
-	// logNewFlights(2);
+	// logNewFlights(1);
 
 	function logNewFlights(n) {
 		for ( var i = 0; i < n; i += 1 ) {
@@ -1069,8 +1069,8 @@ $(document).ready(function() {
 					rtncity = Math.floor(Math.random() * 5);
 				}
 
-				dptcity = cities[dptcity];
-				rtncity = cities[rtncity];
+				dptcity = cities[3];
+				rtncity = cities[2];
 
 			function newdpTime() {
 				var n = Math.floor(Math.random()*2);
@@ -1143,37 +1143,39 @@ $(document).ready(function() {
 				}
 			}
 			// Creates a full month of flights for given cities
-			for ( var i = 1; i <= 31; i += 1 ) {
-				for ( var j = 1; j < 6; j += 1 ) {
-					var num = Math.floor(Math.random() * 1500 + 1),
-							price = Math.floor(Math.random() * ( 119 - 79 + 1 ) + 79);
+			for ( var m = 1; m <= 12; m += 1 ) {
+        for ( var i = 1; i <= 31; i += 1 ) {
+          for ( var j = 1; j < 6; j += 1 ) {
+            var num = Math.floor(Math.random() * 1500 + 1),
+                price = Math.floor(Math.random() * ( 119 - 79 + 1 ) + 79);
 
-					function newDay(day) {
-						var date = Math.floor(Math.random()*30+1),
-								month = Math.floor(Math.random()*12+1);
-						return newdate = i + "-" + '12' + "-2012";
-					}
+            function newDay(day) {
+              var date = Math.floor(Math.random()*30+1),
+                  month = Math.floor(Math.random()*12+1);
+              return newdate = i + "-" + m + "-12";
+            }
 
-					dptime = newdpTime();
-					artime = newArrTime(dptime);
-					tfTime = twentyfour(dptime);
-					newdate = newDay();
+            dptime = newdpTime();
+            artime = newArrTime(dptime);
+            tfTime = twentyfour(dptime);
+            newdate = newDay();
 
-					var newData = {
-													'flightnumber': num,
-													'date': newdate,
-													'departcity': 'Tofino',
-													'departtime': dptime,
-													'tfhour': tfTime,
-													'arrivalcity': 'Vancouver',
-													'arrivaltime': artime,
-													'price': price
-												};
+            var newData = {
+              'flightnumber': num,
+              'date': newdate,
+              'departcity': dptcity,
+              'departtime': dptime,
+              'tfhour': tfTime,
+              'arrivalcity': rtncity,
+              'arrivaltime': artime,
+              'price': price
+            };
 
-					dpd.flights.post(newData);
+            dpd.flights.post(newData);
 
-					};
-				}
+            };
+          }
+        }
 			}
 		}
 });
