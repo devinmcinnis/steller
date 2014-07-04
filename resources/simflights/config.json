@@ -1,0 +1,61 @@
+{
+	"type": "Collection",
+	"properties": {
+		"flightnumber": {
+			"name": "flightnumber",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "flightnumber",
+			"order": 0
+		},
+		"departcity": {
+			"name": "departcity",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "departcity",
+			"order": 1
+		},
+		"arrivalcity": {
+			"name": "arrivalcity",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "arrivalcity",
+			"order": 2
+		},
+		"departtime": {
+			"name": "departtime",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "departtime",
+			"order": 3
+		},
+		"flighttime": {
+			"name": "flighttime",
+			"type": "number",
+			"typeLabel": "number",
+			"required": false,
+			"id": "flighttime",
+			"order": 4
+		},
+		"late": {
+			"name": "late",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "late",
+			"order": 5
+		},
+		"live": {
+			"name": "live",
+			"type": "boolean",
+			"typeLabel": "boolean",
+			"required": false,
+			"id": "live",
+			"order": 6
+		}
+	}
+}

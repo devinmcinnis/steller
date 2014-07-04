@@ -1,0 +1,37 @@
+{
+	"type": "Collection",
+	"properties": {
+		"locnumber": {
+			"name": "locnumber",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "locnumber",
+			"order": 0
+		},
+		"name": {
+			"name": "name",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "name",
+			"order": 1
+		},
+		"latitude": {
+			"name": "latitude",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "latitude",
+			"order": 2
+		},
+		"longitude": {
+			"name": "longitude",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "longitude",
+			"order": 3
+		}
+	}
+}

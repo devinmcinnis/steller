@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Steller Air</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/normalize.css">
+		<script src="js/jquery-1.8.2.min.js"></script>
+		<script src="dpd.js"></script>
+		<script src="js/jquery-ui-1.9.0.custom.min.js"></script>
+		<link rel="stylesheet" href="css/jquery-ui.redmond.1.8.23.css">
+		<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css">
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA1S45D3RzVik7pg_EO-LXPpYPHp0xtDUs&sensor=false"></script>
+		<script src="js/googlemaps.js"></script>
+		<script src="js/richmarker_min.js"></script>
+		<script>
+			$(document).bind('mobileinit', function () {
+				$.extend ( $.mobile, {
+					defaultPageTransition: 'slide'
+				})
+			});
+			$(document).bind("mobileinit", function(){
+				$.mobile.touchOverflowEnabled = true;
+			});
+		</script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/script.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<img src="img/logo.png" alt="Steller Air Logo">
+			</header>
+			<div class="navbar">
+					<ul class="nav">
+						<li class="active"><a href="#page1"><p>Book Flight</p></a></li>
+						<li><a href="#"><p>Check In</p></a></li>
+						<li><a href="#"><p>Where We Fly</p></a></li>
+						<li><a href="#"><p>Get Air</p></a></li>
+						<li><a href="#"><p>Flying Steller</p></a></li>
+						<li><a href="#"><p>Travel Information</p></a></li>
+					</ul>
+			</div> 
+				<div data-role="page" id="page1">
+					<div data-role="header" data-id="header" data-theme="b">
+						<img src="/img/menu_icon.svg" class="menu-icon">
+						<h1>Steller Air</h1>
+						<a href="#login" data-icon="arrow-r" data-iconpos="right" data-corners="false" class="ui-btn-right">Login</a>
+						<div data-role="navbar" class="nav">
+							<ul>
+								<li class="bread-crumb">
+									<a class="ui-state-persist">
+										<div class="bc-tbox">
+											<p>Flight</p>
+										</div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Pricing</p>
+										</div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Personal</p>
+										</div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Confirm</p>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div data-role="content">
+						<div id="sidebar">
+							<div class="recent">
+								<label data-role="header" data-theme="c">Recent Searches</label>
+								<p data-role="header" data-theme="c">None</p>
+								<p data-role="header" data-theme="c"></p>
+							</div>
+							<form class="search-box">
+								<div class="select-cities">
+									<fieldset class="depart">
+									</fieldset>								
+									<!-- <div class="cityflip">
+										<button type="button" data-corners="false"><img src="img/flip_icon.svg"/></button>
+									</div> -->
+									<fieldset class="arrive">
+									</fieldset>
+								</div>
+								<fieldset id="tabs" class="dates">
+									<ul>
+										<li class="return"><a href="#tabs-1">Return</a></li>
+										<li class="oneway"><a href="#tabs-2">One Way</a></li>
+									</ul>
+									<div id="tabs-1">
+										<div class="depart-stage"> 
+											<fieldset data-role="header" data-theme="c">
+													<label class="depart-city">Departure</label>
+													<input type="text" class="ss depart-city" id="depart-city" placeholder="Departure City" readonly>
+													<label>Depart</label>
+													<input type="text" id="d_depart-date" placeholder="Departure Date" class="ss" readonly><input type="text" class="ss" placeholder="Date" id="m_depart-date" readonly>
+											</fieldset>
+										</div>
+										<div class="return-stage">
+											<fieldset data-role="header" data-theme="c">
+												<label class="return-city rt-label">Arrival</label>
+												<input type="text" class="ss return-city" id="return-city" placeholder="Arrival City" readonly>
+												<label>Return</label>
+												<input type="text" placeholder="Return Date" id="d_return-date" class="ss" readonly><input type="text" placeholder="Date" class="ss" id="m_return-date" readonly>
+											</fieldset>
+										</div>
+									</div>
+									<div id="tabs-2">
+										<div class="depart-stage">
+											<fieldset>
+												<label data-role="header" data-theme="c">Depart</label>
+												<input type="text" placeholder="Departure Date"  id="d_oneway-depart" class="ss" readonly><input type="text" placeholder="Depart" id="m_oneway-depart" readonly>
+										</fieldset>
+										</div>
+										<div class="return-stage">
+											<fieldset>
+												<label data-role="header" data-theme="c">One-Way</label>
+												<p>Add a return flight</p>
+											</fieldset>
+										</div>
+									</div>
+								</fieldset>
+								<img src="/img/map_open-icon.png" id="map-open-icon">
+								<div id="map-canvas"></div>
+								<input type="button" id="map-select-cities" value="Select Cities" data-corners="false">
+								<div>
+									<input type="button" class="find_button" value="Find Flights" data-corners="false">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<div data-role="dialog" id="citylist" data-theme="b" class="ui-page">
+					<div data-role="header" data-theme="b">
+						<h3>City List</h3>
+					</div>
+					<div data-role="content">
+						<a data-role="button" data-rel="back" data-corners="false">Nanaimo</a>
+						<a data-role="button" data-rel="back" data-corners="false">Sechelt</a>
+						<a data-role="button" data-rel="back" data-corners="false">Tofino</a>
+						<a data-role="button" data-rel="back" data-corners="false">Vancouver</a>
+						<a data-role="button" data-rel="back" data-corners="false">Victoria</a>
+					</div>
+				</div>
+
+				<div data-role="page" id="page2">
+					<div data-role="header" data-id="header" data-theme="b">
+						<img src="/img/menu_icon.svg" class="menu-icon">
+						<h1>Steller Air</h1>
+						<a href="#login" data-icon="arrow-r" data-iconpos="right" data-corners="false" class="ui-btn-right">Login</a>
+						<div data-role="navbar" class="nav">
+							<ul>
+								<li class="bread-crumb">
+									<a class="ui-state-persist">
+										<div class="bc-tbox">
+											<p>Flight</p>
+										</div>
+										<div class="bc-bar"></div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Pricing</p>
+										</div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Personal</p>
+										</div>
+
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Confirm</p>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div data-role="content">
+						<div class="instructions">
+							<h2>Select Your Flights</h2>
+							<p>Use the pricebar to scroll through available flights that are ready to take your on board. Don't forget about your returning flight! We need to get you home safe too. All fares displayed on this page are in <strong>Canadian dollars</strong>, per person per one-way, and do not include taxes, fees, charges or surcharges.</p>
+						</div>
+						<div id="price-chart">
+							<div id="flight-nav">
+							</div>
+							<div id="pricebar">
+								<div id="price-container">
+									<div class="depart-flights-table">
+										<div class="price-tabs-controls">	
+											<div class="price-tabs-container">
+												<ol class="price-tabs">
+												</ol>
+											</div>
+										</div>
+										<div class="price-content">
+										</div>
+									</div>
+									<div class="return-flights-table">
+										<div class="price-tabs-controls">
+											<div class="price-tabs-container">
+												<ol class="price-tabs">
+												</ol>
+											</div>
+										</div>
+										<div class="price-content">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<script>
+					var swipeSize = 0, swipeCount = 0;
+					$('#page2').on('pageshow', function (event) {
+						event.preventDefault();
+						event.stopPropagation();
+						$('.price-tabs').live('swiperight', function (event) {
+							event.stopImmediatePropagation();
+							if ( swipeCount < 5 ) {
+								$(this)
+									.filter(':not(:animated)')
+									.animate({
+										left: '+=' + swipeSize + 'px'
+									}).each(function () {
+										swipeCount += 1;
+									});
+							}
+						});
+						$('.price-tabs').live('swipeleft', function (event) {
+							event.preventDefault();
+							event.stopPropagation();
+							if ( swipeCount > -5 ) {
+								$(this)
+									.filter(':not(:animated)')
+									.animate({
+										left: '-=' + swipeSize + 'px'
+									}).each(function () {
+										swipeCount -= 1;
+									});
+							}
+						});							
+					});
+					</script>
+				</div>
+
+				<div data-role="page" id="page3">
+					<div data-role="header" data-id="header" data-theme="b">
+						<img src="/img/menu_icon.svg" class="menu-icon">
+						<h1>Steller Air</h1>
+						<a href="#login" data-icon="arrow-r" data-iconpos="right" data-corners="false" class="ui-btn-right">Login</a>
+						<div data-role="navbar" class="nav">
+							<ul>
+								<li class="bread-crumb">
+									<a class="ui-state-persist">
+										<div class="bc-tbox">
+											<p>Flight</p>
+										</div>
+										<div class="bc-bar"></div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Pricing</p>
+										</div>
+										<div class="bc-bar"></div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Personal</p>
+										</div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Confirm</p>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div data-role="content">
+						<div class="instructions">
+							<h2>Contact Information</h2>
+							<p>Passenger names in this booking must match the name on the identification that the passenger will be required to provide at airport check-in. If you have provided a mobile phone number and a flight disruption occurs, a notification will be sent via text message. If no mobile number is provided, a notification will be sent to the e-mail address.</p>
+						</div>
+						<form id="pass-info">
+							<fieldset>
+								<legend>Passenger Information</legend>
+								<div class="pass-content">
+									<label class="pass-title">Title *
+										<select data-name="name-title" data-corners="false">
+											<option data-name="ms">Ms.</option>
+											<option data-name="mrs">Mrs.</option>
+											<option data-name="mr">Mr.</option>
+										</select>
+									</label>
+									<label class="pass-firstname">First Name *<input></label>
+									<label class="pass-lastname">Last Name *<input></label>
+									<label class="pass-dob">Date of Birth</label>
+										<div class="dob">
+											<select data-name="month" data-corners="false">
+												<option data-name="january">Jan</option>
+												<option data-name="february">Feb</option>
+												<option data-name="march">Mar</option>
+												<option data-name="april">Apr</option>
+												<option data-name="may">May</option>
+												<option data-name="june">Jun</option>
+												<option data-name="july">Jul</option>
+												<option data-name="august">Aug</option>
+												<option data-name="september">Sep</option>
+												<option data-name="october">Oct</option>
+												<option data-name="november">Nov</option>
+												<option data-name="december">Dec</option>
+											</select>
+											<select data-name="day" data-corners="false">
+												<option data-name="1">1</option>
+												<option data-name="2">2</option>
+												<option data-name="3">3</option>
+												<option data-name="4">4</option>
+												<option data-name="5">5</option>
+												<option data-name="6">6</option>
+												<option data-name="7">7</option>
+												<option data-name="8">8</option>
+												<option data-name="9">9</option>
+												<option data-name="10">10</option>
+												<option data-name="11">11</option>
+												<option data-name="12">12</option>
+												<option data-name="13">13</option>
+												<option data-name="14">14</option>
+												<option data-name="15">15</option>
+												<option data-name="16">16</option>
+												<option data-name="17">17</option>
+												<option data-name="18">18</option>
+												<option data-name="19">19</option>
+												<option data-name="20">20</option>
+												<option data-name="21">21</option>
+												<option data-name="22">22</option>
+												<option data-name="23">23</option>
+												<option data-name="24">24</option>
+												<option data-name="25">25</option>
+												<option data-name="26">26</option>
+												<option data-name="27">27</option>
+												<option data-name="28">28</option>
+												<option data-name="29">29</option>
+												<option data-name="30">30</option>
+												<option data-name="31">31</option>
+											</select>
+											<select data-name="year" data-corners="false">
+												<option data-name="1940">1940</option>
+												<option data-name="1941">1941</option>
+												<option data-name="1942">1942</option>
+												<option data-name="1943">1943</option>
+												<option data-name="1944">1944</option>
+												<option data-name="1945">1945</option>
+												<option data-name="1946">1946</option>
+												<option data-name="1947">1947</option>
+												<option data-name="1948">1948</option>
+												<option data-name="1949">1949</option>
+												<option data-name="1950">1950</option>
+												<option data-name="1951">1951</option>
+												<option data-name="1952">1952</option>
+												<option data-name="1953">1953</option>
+												<option data-name="1954">1954</option>
+												<option data-name="1955">1955</option>
+												<option data-name="1956">1956</option>
+												<option data-name="1957">1957</option>
+												<option data-name="1958">1958</option>
+												<option data-name="1959">1959</option>
+												<option data-name="1960">1960</option>
+												<option data-name="1961">1961</option>
+												<option data-name="1962">1962</option>
+												<option data-name="1963">1963</option>
+												<option data-name="1964">1964</option>
+												<option data-name="1965">1965</option>
+												<option data-name="1966">1966</option>
+												<option data-name="1967">1967</option>
+												<option data-name="1968">1968</option>
+												<option data-name="1969">1969</option>
+												<option data-name="1970">1970</option>
+												<option data-name="1971">1971</option>
+												<option data-name="1972">1972</option>
+												<option data-name="1973">1973</option>
+												<option data-name="1974">1974</option>
+												<option data-name="1975">1975</option>
+												<option data-name="1976">1976</option>
+												<option data-name="1977">1977</option>
+												<option data-name="1978">1978</option>
+												<option data-name="1979">1979</option>
+												<option data-name="1980">1980</option>
+												<option data-name="1981">1981</option>
+												<option data-name="1982">1982</option>
+												<option data-name="1983">1983</option>
+												<option data-name="1984">1984</option>
+												<option data-name="1985">1985</option>
+												<option data-name="1986">1986</option>
+												<option data-name="1987">1987</option>
+												<option data-name="1988">1988</option>
+												<option data-name="1989">1989</option>
+												<option data-name="1990">1990</option>
+												<option data-name="1991">1991</option>
+												<option data-name="1992">1992</option>
+												<option data-name="1993">1993</option>
+												<option data-name="1994">1994</option>
+											</select>
+										</div>
+									<label class="pass-seat">Seat Preference
+										<select data-name="seat" data-corners="false">
+											<option data-name="aisle">Aisle</option>
+											<option data-name="window">Window</option>
+										</select>
+									</label>
+									<label class="pass-skymiles">Steller Air SkyMiles Number<input></label>
+								</div>
+							</fieldset>
+							<fieldset id="pass-contact">
+								<legend>Contact Information</legend>
+								<div class="pass-content">
+									<label class="pass-countrycode">Country Code
+										<select data-name="countries" data-corners="false">
+											<option data-name="canada">Canada (+001)</option>
+											<option data-name="unitedstates">United States(+001)</option>
+											<option data-name="greece">Greece (30)</option>
+											<option data-name="mexico">Mexico (52)</option>
+											<option data-name="korea">Best Korea (82)</option>
+											<option data-name="venezuela">Venezuela (58)</option>
+										</select>
+									</label>
+									<label class="pass-areacode">Area Code<input class="pass-areacode"></label>
+									<label class="pass-phone">Phone Number<input class="pass-phone"></label>
+									<label class="pass-email">Email Address *<input class="pass-email"></label>
+								</div>
+							</fieldset>
+							<div class="cntu-button" data-role="button" data-corners="false">
+								<p>Continue</p>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div data-role="page" id="page4">
+					<div data-role="header" data-id="header" data-theme="b">
+						<img src="/img/menu_icon.svg" class="menu-icon">
+						<h1>Steller Air</h1>
+						<a href="#login" data-icon="arrow-r" data-iconpos="right" data-corners="false" class="ui-btn-right">Login</a>
+						<div data-role="navbar" class="nav">
+							<ul>
+								<li class="bread-crumb">
+									<a class="ui-state-persist">
+										<div class="bc-tbox">
+											<p>Flight</p>
+										</div>
+										<div class="bc-bar"></div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Pricing</p>
+										</div>
+										<div class="bc-bar"></div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Personal</p>
+										</div>
+										<div class="bc-bar"></div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Confirm</p>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div data-role="content">
+						<ol class="confirm-flight-depart">
+							<div>
+								<li class="confirm-title">Departing Flight</li>
+								<ul class="flight-info">
+									<li class="flightnumber">Flight Number</li>
+									<li class="flightnumber">Departure City</li>
+									<li class="departtime">Departure Time</li>
+									<li class="flightnumber">Arrival City</li>
+									<li class="arrivaltime">Arrival Time</li>
+									<li class="price">Your Price</li>
+								</ul>
+							</div>
+						</ol>
+						<ol class="confirm-flight-return">
+							<div>
+								<li class="confirm-title">Returning Flight</li>
+								<ul class="flight-info">
+									<li class="flightnumber">Flight Number</li>
+									<li class="flightnumber">Departure City</li>
+									<li class="departtime">Departure Time</li>
+									<li class="flightnumber">Arrival City</li>
+									<li class="arrivaltime">Arrival Time</li>
+									<li class="price">Your Price</li>
+								</ul>
+							</div>
+						</ol>
+						<form id="pay-info">
+							<fieldset>
+								<legend>Payment Information</legend>
+								<div class="payment-content">
+									<label class="pay-card">Card Type
+										<input class="pay-card">
+										<img src="/img/creditcards_fake.png" style="display: none;"></label>
+									<label class="pay-number">Card Number<input class="pay-number"></label>
+									<label class="pay-exp_month">Expiry Month<input class="pay-exp_month"></label>
+									<label class="pay-exp_day">Expiry Day<input class="pay-exp_day"></label>
+									<label class="pay-security_code">Security Code<input class="pay-security_code">
+										<img src="/img/securitycode.png"></label>
+									<ul class="confirm-rules">
+										<li class="credit-title">Changes</li>
+										<li>Prior to day of departure, change fee per direction, per passenger, is $50 CAD plus applicable taxes and any additional fare difference. Changes can be made up to 6 hours prior to departure.</li>
+										<li>Same-day changes are subject to availability and are permitted only for same-day flights at a fee of $100 CAD per direction, per passenger.</li>
+										<li>Same-day standby is not permitted.</li>
+										<li class="credit-title">Cancellations</li>
+										<li>Tickets are non-refundable and non-transferable.</li>
+										<li>Cancellations can be made up to 6 hours before the flight departure time.</li>
+										<li>Customers who do not show up for their flight will forfeit the fare paid.</li>
+									</ul>
+								</div>
+							</fieldset>
+							<fieldset class="review-purchase">
+								<legend>Purchase Information</legend>
+								<div class="payment-content">
+									<ol>
+										<li>Departing Flight Fare:</li>
+										<li>Returning Flight Fare:</li>
+										<li>Taxes, Fees, and Charges:</li>
+										<li><strong>Total - Canadian Dollars:</strong></li>
+									</ol>
+									<ol class="confirmed-price">
+										<li></li>
+										<li></li>
+										<li></li>
+										<li><strong></strong></li>
+									</ol>
+								</div>
+							</fieldset>
+							<div class="instructions">
+								<h2>Confirmation</h2>
+								<p>By clicking 'Finalize Order and Itinerary', you accept the charges that will be billed to your credit card and confirm that you have read and accept Steller Air's tariffs, fare rules and General Conditions of Carriage above.</p>
+							</div>
+							<div class="cntu-button" data-role="button" data-corners="false">
+								<p>Finalize Order and Itinerary</p>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div data-role="page" id="page5">
+					<div data-role="header" data-id="header" data-theme="b">
+						<img src="/img/menu_icon.svg" class="menu-icon">
+						<h1>Steller Air</h1>
+						<a href="#login" data-icon="arrow-r" data-iconpos="right" data-corners="false" class="ui-btn-right">Login</a>
+						<div data-role="navbar" class="nav">
+							<ul>
+								<li class="bread-crumb">
+									<a class="ui-state-persist">
+										<div class="bc-tbox">
+											<p>Flight</p>
+										</div>
+										<div class="bc-bar"></div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Pricing</p>
+										</div>
+										<div class="bc-bar"></div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Personal</p>
+										</div>
+										<div class="bc-bar"></div>
+									</a>
+								</li>
+								<li class="bread-crumb">
+									<a>
+										<div class="bc-circle"></div>
+										<div class="bc-bar"></div>
+										<div class="bc-tbox">
+											<p>Confirm</p>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div data-role="content">
+						<p>Flight itinerary confirmed.</p>
+						<p>Thank you for flying with Steller.</p>
+						<p>We have emailed you your flight itinery and you will be notified of any changes to your
+							 flight up to 30 minutes before boarding.</p>
+					</div>
+				</div>
+
+			<footer>
+				<ul class="thumbnails">
+					<li class="thumbnail">
+						<a href="#">
+							<img src="http://placehold.it/300x200/f5f5f5/777777" alt="Advertisement">
+						</a>
+					</li>
+					<li class="thumbnail">
+						<a href="#">
+							<img src="http://placehold.it/300x200/f5f5f5/777777" alt="Advertisement">
+						</a>
+					</li>
+					<li class="thumbnail">
+						<a href="#">
+							<img src="http://placehold.it/300x200/f5f5f5/777777" alt="Advertisement">
+						</a>
+					</li>
+					<li class="thumbnail">
+						<a href="#">
+							<img src="http://placehold.it/300x200/f5f5f5/777777" alt="Advertisement">
+						</a>
+					</li>
+				</ul>
+			</footer>
+		<!-- 
+		<p><a href="http://thenounproject.com/noun/airplane/#icon-No504" target="_blank">Airplane</a> from The Noun Project</p>
+		<p><a href="http://thenounproject.com/noun/airplane/#icon-No5064" target="_blank">Airplane</a> by Dmitry Baranovsky at <a href="http://thenounproject.com">The Noun Project</a></p>
+		<p><a href="http://thenounproject.com/noun/man/#icon-No3899" target="_blank">Man</a> by Michael McMillan at <a href="http://thenounproject.com">The Noun Project</a></p>
+		<p><a href="http://thenounproject.com/noun/calendar/#icon-No404" target="_blank">Man</a> by <a href="http://thenounproject.com">The Noun Project</a></p>
+		-->
+		</div>
+	</body>
+</html>
