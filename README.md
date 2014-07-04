@@ -1,12 +1,12 @@
 ## Steller Air
 
-My final project from Digital Design at VFS, Jan-Dec 2012, resurrected after almost 2 years.
+Final project from Digital Design at VFS, Jan-Dec 2012, resurrected after almost 2 years.
 
 #### Setup locally
 
-`npm i -g deployd`
-`git clone git@github.com:devinmcinnis/steller.git`
-`cd steller`
+`npm i -g deployd`  
+`git clone git@github.com:devinmcinnis/steller.git`  
+`cd steller`  
 `dpd -o`
 
 *Note*: most flights and sim-flights do not work
@@ -19,4 +19,4 @@ My final project from Digital Design at VFS, Jan-Dec 2012, resurrected after alm
 - [Deployd](http://deployd.com)
 - Handful of HTML
 - Spaghetti JS
-- Rat king CSS
+- Rat King CSS
