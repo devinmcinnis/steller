@@ -9,8 +9,6 @@ Final project from Digital Design at VFS, Jan-Dec 2012, resurrected after almost
 `cd steller`  
 `dpd -o`
 
-*Note*: most flights and sim-flights do not work
-
 #### Tools
 
 - [Bootstrap](http://getbootstrap.com)
