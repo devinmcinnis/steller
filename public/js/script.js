@@ -62,7 +62,7 @@ $(document).ready(function() {
 				sizePricebar();
 				positionCityList();
 			}, 500);
-			
+
 		}
 	}
 
@@ -75,9 +75,9 @@ $(document).ready(function() {
 
 	// Change page function for the 'Find Flights' and 'Continue' buttons.
 	function changePage(f, e) {
-		// Had to create paramters because once I validated the search form and 
-		// added the 'changePage' function to the bottom of the 'storeSearch' function, 
-		// $(this) changed to 'window' instead of the 'Find Flights' button. 
+		// Had to create paramters because once I validated the search form and
+		// added the 'changePage' function to the bottom of the 'storeSearch' function,
+		// $(this) changed to 'window' instead of the 'Find Flights' button.
 		// f = 'Find Flights' button
 		// e checks if the Find button is calling this function.
 		if ( e === 1 || e === 3 ) {
@@ -111,7 +111,7 @@ $(document).ready(function() {
 	};
 
 	// 'getShortDayName' displays the first 3 letters of the day.
-	Date.prototype.dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 
+	Date.prototype.dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
   	'Friday', 'Saturday'];
 	Date.prototype.getDayName = function() {
 	    return this.dayNames[this.getDay()];
@@ -120,7 +120,7 @@ $(document).ready(function() {
 	    return this.getDayName().substr(0, 3);
 	};
 
-	// Everytime page 1 displays, refresh the map. 
+	// Everytime page 1 displays, refresh the map.
 	// Has timer to not conflict with initial creation of map.
 	$('#page1').on('pageshow', function () {
 		setTimeout(function () {
@@ -134,7 +134,7 @@ $(document).ready(function() {
 			if ( document.body.clientWidth > 500 ) {
 				removeClasses();
 			}
-		}, 5);			
+		}, 5);
 	});
 
 	// Grey bread crumbs on mobile site
@@ -142,7 +142,7 @@ $(document).ready(function() {
 		// Find what button is being clicked.
 		var num = $(this).index() + 1;
 		var page = '#page' + num;
-		// If the bread crumb is for a page before the current page, 
+		// If the bread crumb is for a page before the current page,
 		// apply a 'reverse' swipe transition animation
 		var direction = $(this).index() + 1 < parseInt($(this).parents('[data-role="page"]').attr('id').substr(4, 1), 10);
 
@@ -158,7 +158,7 @@ $(document).ready(function() {
 	});
 
 	$('.select-cities > .depart input, .select-cities > .arrive input, #tabs-1 #depart-city,	#tabs-1 #return-city').on('vclick', citylist);
-	
+
 	// Positions the 'Depart'/'Return' citylist on desktop behind the 'Departure/Arrival' section.
 	function positionCityList() {
 			var top = $('div.select-cities').offset().top + 2;
@@ -169,7 +169,7 @@ $(document).ready(function() {
 			$('#citylist').css({
 				top: top,
 				left: size - ((size - cont) / 2) - width
-			});	
+			});
 	}
 
 	// Display city options
@@ -234,12 +234,12 @@ $(document).ready(function() {
 					markers[i].setIcon('/img/markers/marker_' + cityname + '_selected.png');
 					// Send selected city and coordinates to 'drawMap' function to create flight path.
 					drawMap(loc);
-				// If the selected city matches a marker and the 'Arrival City'.		
+				// If the selected city matches a marker and the 'Arrival City'.
 				} else if ( title === city && title === rtcity.val() ) {
 					if ( city === otherInput.val() ) {
 						otherInput.val('').trigger('change');
 						flightPath.setMap(null);
-					} 
+					}
 					markers[i].setIcon('/img/markers/marker_' + cityname + '_selected.png');
 					drawMap(loc);
 				// If a marker is one of the other previously selected cities, do nothing.
@@ -279,7 +279,7 @@ $(document).ready(function() {
 			if ( (firstOrLast === 'first' && date1_rt) || (firstOrLast === 'last' && date2_rt) ) {
 				$('.recent p:' + firstOrLast + '-of-type').html(
 					sessionStorage.getItem('depart-city' + oneOrTwo)
-					+ ' to ' + 
+					+ ' to ' +
 					sessionStorage.getItem('return-city' + oneOrTwo)
 					+ ' - ' +
 					sessionStorage.getItem('m_depart-date' + oneOrTwo)
@@ -289,7 +289,7 @@ $(document).ready(function() {
 			} else {
 				$('.recent p:' + firstOrLast + '-of-type').html(
 					sessionStorage.getItem('depart-city' + oneOrTwo)
-					+ ' to ' + 
+					+ ' to ' +
 					sessionStorage.getItem('return-city' + oneOrTwo)
 					+ ' - ' +
 					sessionStorage.getItem('m_depart-date' + oneOrTwo)
@@ -306,7 +306,7 @@ $(document).ready(function() {
 		}
 	}
 
-	// Update the 
+	// Update the
 	function loadSession() {
 		// If there are no recent searches, do not display a section for it under 'Recent Searches'.
 		$('.recent p').each(function () {
@@ -361,13 +361,13 @@ $(document).ready(function() {
 		}
 
 		var ulCss = {
-					width: boxSize, 
-					height: boxSize, 
+					width: boxSize,
+					height: boxSize,
 					'margin-left': options.margin,
 					'margin-right': options.margin
 				};
 		// Take the length of all of the pricebar tabs, divide it in half, and multiple it by the size
-		// of however many boxes to display. Add the margin value to each box and the length of the 
+		// of however many boxes to display. Add the margin value to each box and the length of the
 		// number of boxes. Multiply everything depending on if a return or one-way flight was selected.
 		var olWidth = (((ul.length / 2) * boxSize) + (options.margin * ul.length) + ul.length) * m;
 				swipeSize = (boxSize * 3) + (options.margin * 2 * 3) + 6;
@@ -403,7 +403,7 @@ $(document).ready(function() {
 			$('.price-tabs li').removeAttr('style');
 		}
 
-	// Changes to site when sizing down to the mobile version 
+	// Changes to site when sizing down to the mobile version
 	function addClasses() {
 			// Remove any inline styling from Javascript on the city list.
 			$('#citylist').removeAttr('style');
@@ -423,7 +423,7 @@ $(document).ready(function() {
 			// input in order to line up with mobile icon.
 			if ( $('#m_depart-date').val().length > 1 ) {
 				$('#m_depart-date').css('padding-top', '5px');
-			} 
+			}
 			if ( $('#m_return-date').val().length > 1 ) {
 				$('#m_return-date').css('padding-top', '5px');
 			}
@@ -458,13 +458,13 @@ $(document).ready(function() {
 		}
 	}
 
-	// On mobile click of 'Select Cities' button, close the full screen map 
+	// On mobile click of 'Select Cities' button, close the full screen map
 	// and return it to default settings.
 	$('#map-open-icon + .ui-btn, #map-canvas + .ui-btn').live('vclick', closeFullscreen);
 
 	function closeFullscreen() {
 		var content = $('#page1 div[data-role="content"]'),
-				mc = $('#map-canvas'), 
+				mc = $('#map-canvas'),
 				mcDiv = $('#map-canvas > div'),
 				button = $('#map-canvas + div, .dates + .ui-btn');
 		// Reset all inline styling from the map canvas to default settings.
@@ -486,11 +486,11 @@ $(document).ready(function() {
 		content.css('position', 'static');
 
 		google.maps.event.trigger(map, 'resize');
-		
+
 		map.setOptions({draggable: true, scrollwheel: true});
 		// Refresh map to the size of the window.
 		initialMap();
-		
+
 	};
 
 	// Populate search box with 'Recent Search' selection
@@ -617,7 +617,7 @@ $(document).ready(function() {
 
 	// On click of 'Find Flights' button, start validation and deployd query.
 	$('input.find_button').live('vclick', storeSearch);
-	
+
 	function storeSearch() {
 		var dpcity = $('#depart-city'),
 				rtcity = $('#return-city'),
@@ -626,7 +626,7 @@ $(document).ready(function() {
 
 		// Check to make sure all search inputs have values before continue.
 		if ( dpcity.val().length > 1 && rtcity.val().length > 1 && dpdate.val().length > 1 && rtdate.val().length > 1 ) {
-	
+
 			// Log search as a 'recent search'.
 			// If a saved item exists, make it the second 'Recent Search' option.
 			if ( sessionStorage.getItem('d_depart-date1') && $('.ss').val() !== '' ) {
@@ -653,7 +653,7 @@ $(document).ready(function() {
 
 			// If no saved items exists, save this as the first option.
 			} else if ( $('.ss').val() !== '' ) {
-				
+
 				$('.ss').each(function () {
 					sessionStorage[$(this).attr('id') + '1'] = $(this).val();
 				});
@@ -666,7 +666,7 @@ $(document).ready(function() {
 
 	};
 
-	function getQuery(dir) { 
+	function getQuery(dir) {
 		var dptcity = $('#depart-city').val(),
 			dptdate = $('#d_depart-date').datepicker('getDate'),
 			rtncity = $('#return-city').val(),
@@ -767,7 +767,7 @@ $(document).ready(function() {
 		setTimeout( function () {
 			$('<div>')
 				.addClass('cntu-button')
-				.append('<button data-role="button" data-corners="false">' + 
+				.append('<button data-role="button" data-corners="false">' +
 								'<p>Continue</p>' + '</li>')
 				.appendTo($('#page2 .return-flights-table'));
 			sizePricebar();
@@ -793,16 +793,16 @@ $(document).ready(function() {
 		if ( !checkTab && checkDiv.length < 2 ) {
 			$('#flight-nav')
 				.append('<div class="departing-flight">' +
-								'<p>Depart</p>' + 
+								'<p>Depart</p>' +
 								'<p>From ' + dptCity + ' on ' + dptdate.getShortMonthName() + " " + dptdate.getDate() + '</p>')
 				.append('<div class="returning-flight">' +
-								'<p>Return</p>' + 
+								'<p>Return</p>' +
 								'<p>From ' + arrCity + ' on ' + rtndate.getShortMonthName() + " " + rtndate.getDate() + '</p>');
 				$('#flight-nav > div:first-child').addClass('selected');
 		} else if ( checkTab ) {
 			$('#flight-nav')
 				.append('<div class="departing-flight">' +
-								'<p>Depart</p>' + 
+								'<p>Depart</p>' +
 								'<p>From ' + dptCity + ' on ' + dptdate.getShortMonthName() + " " + dptdate.getDate() + '</p>')
 		}
 
@@ -820,7 +820,7 @@ $(document).ready(function() {
 
 			date.setDate(date.getDate() + 1);
 			// Create new variable to search database
-			var setDate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear(); 
+			var setDate = date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear();
 			// Create new query with new search date
 			var query = {'departcity': dptCity, 'arrivalcity': arrCity, 'date': setDate, $sort: {price: 1}, $limit: 1};
 			// If in the middle of the pricebar, append a box with the class 'selected'.
@@ -911,11 +911,11 @@ $(document).ready(function() {
 	// Add flights to pricing table
 	// 'page' parameter determines the page it's added to.
 	// 'flight' parameter is the dpd returned query.
-	// 'dir' parameter is applied if a direction 'depart/return' value is implied. 
+	// 'dir' parameter is applied if a direction 'depart/return' value is implied.
 	function addFlights(page, flight, dir) {
 		// Determine container based on parameters.
 		// If no 'dir' value, append new flights to 'Depart' section on page 2
-		// else append new flights to 'Return' section on page 2. 
+		// else append new flights to 'Return' section on page 2.
 		var container = $('#page' + page + ' .depart-flights-table .price-content');
 		var cfdepart = $('ol.confirmed-price li:nth-child(1)');
 		var cfreturn = $('ol.confirmed-price li:nth-child(2)');
@@ -924,7 +924,7 @@ $(document).ready(function() {
 		// If 'page4' is implied, append new flights to the 'Confirm Flights' section on page 4.
 		} else if ( page === 4 ) {
 			// Check to see what section user is currently in.
-			// If there is already a flight option in the respective section on page 4, 
+			// If there is already a flight option in the respective section on page 4,
 			// remove that flight option and add a new flight.
 			if ( $('div.departing-flight').hasClass('selected') ) {
 				// Assign container to the departing container.
@@ -964,7 +964,7 @@ $(document).ready(function() {
 			.append('<li class="price">$' + flight.price + '</li>')
 			.append('<li class="pick"><img src="img/checkmark_icon.png"></li>')
 			.appendTo(container);
-	
+
 	};
 
 	$('#page2 div.price-content > ul:not(:first-child)').live('vclick', selectFlight);
@@ -981,7 +981,7 @@ $(document).ready(function() {
 		});
 	}
 
-	// When clicking on any tab on page 2, add the class 'selected' to the tab, 
+	// When clicking on any tab on page 2, add the class 'selected' to the tab,
 	// changing it's color.
 	function selected() {
 		$(this).siblings().removeClass('selected');
@@ -1047,8 +1047,8 @@ $(document).ready(function() {
 			}
 	}
 
-	// I wrote this a couple of weeks ago. I'm sure it's not very good but I used it to populate 
-	// my 'FLIGHTS' collection (to be able to search for flights). It somewhat works (with bugs) 
+	// I wrote this a couple of weeks ago. I'm sure it's not very good but I used it to populate
+	// my 'FLIGHTS' collection (to be able to search for flights). It somewhat works (with bugs)
 	// but I've only included it so you wouldn't have to log in a bunch of flights. Uncomment the
 	// following function and refresh the page. Don't forget to re-comment this line after or
 	// you'll add 10 new flights on every new page refresh.
@@ -1068,7 +1068,7 @@ $(document).ready(function() {
 				while ( dptcity === rtncity ) {
 					rtncity = Math.floor(Math.random() * 5);
 				}
-			
+
 				dptcity = cities[dptcity];
 				rtncity = cities[rtncity];
 
@@ -1159,14 +1159,14 @@ $(document).ready(function() {
 					tfTime = twentyfour(dptime);
 					newdate = newDay();
 
-					var newData = {	
-													'flightnumber': num, 
-													'date': newdate, 
-													'departcity': 'Tofino', 
-													'departtime': dptime, 
-													'tfhour': tfTime, 
-													'arrivalcity': 'Vancouver', 
-													'arrivaltime': artime, 
+					var newData = {
+													'flightnumber': num,
+													'date': newdate,
+													'departcity': 'Tofino',
+													'departtime': dptime,
+													'tfhour': tfTime,
+													'arrivalcity': 'Vancouver',
+													'arrivaltime': artime,
 													'price': price
 												};
 

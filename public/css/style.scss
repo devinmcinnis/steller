@@ -283,7 +283,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		color: #DDD;
 	}
 
-	//// Bread crumbs	
+	//// Bread crumbs
 	// Positioning
 	.ui-navbar ul {
 		overflow: hidden;
@@ -389,7 +389,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		border-top: 1px solid #F9F9F9;
 	}
 
-	// Citylist Popup	
+	// Citylist Popup
 
 	.ui-dialog-contain {
 		@include box-shadow(0px 2px 6px rgba(0,0,0,.4));
@@ -397,7 +397,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 	.container > #citylist {
 		background: $background_blue;
 	}
-	#citylist > div, 
+	#citylist > div,
 	#citylist > div > div {
 		@include border-radius(0);
 		background: $background_grey;
@@ -419,7 +419,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 	}
 
 	//// Depart and Arrival Sections
-	
+
 	.select-cities {
 		@include resp_box;
 		@include resp_orient(horizontal);
@@ -474,12 +474,12 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		background: #FAFAFA;
 		@include box-shadow(0px 1px 7px rgba(50,50,50,0.15));
 	}
-	#tabs-1 .depart-stage fieldset, 
+	#tabs-1 .depart-stage fieldset,
 	#tabs-2 .depart-stage fieldset {
 		margin-right: 5px;
 		height: 145px;
 	}
-	#tabs-1 .return-stage fieldset, 
+	#tabs-1 .return-stage fieldset,
 	#tabs-2 .return-stage fieldset {
 		margin-left: 5px;
 		height: 145px;
@@ -516,7 +516,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		background: url(/img/map_icon.svg) no-repeat scroll 9% 5px, url(/img/cancel_icon.svg) #92C4EA no-repeat scroll 90% 8px;
 		background-size: 15px;
 	}
-	.depart-stage input:first-of-type, 
+	.depart-stage input:first-of-type,
 	.return-stage input:first-of-type {
 		font-size: $font + 2pt;
 		text-align: left;
@@ -525,7 +525,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		background: url(/img/plane_icon.svg) no-repeat scroll 0px 10px;
 		background-size: 25px;
 	}
-	.depart-stage input:last-of-type, 
+	.depart-stage input:last-of-type,
 	.return-stage input:last-of-type {
 		font-size: $font + 10pt;
 		text-align: left;
@@ -615,7 +615,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 
 	// 'Find Flights' Button
 
-	.search-box > div:last-child > div, 
+	.search-box > div:last-child > div,
 	.search-box > div:last-child:hover > div,
 	.search-box > div:last-child:active > div {
 		padding: 0px;
@@ -632,7 +632,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 	//Page 2 - Pricing
 
 	div#flight-nav {
-		@include resp_box;	
+		@include resp_box;
 	}
 	// 'Depart' and 'Return' block tabs
 
@@ -660,8 +660,8 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		font-size: $font + 6pt;
 		text-transform: uppercase;
 	}
-	
-	
+
+
 	// Swipe pricebar
 
 	#pricebar {
@@ -703,7 +703,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		@include resp_orient(vertical);
 		@include transition(all 0.5s ease-in-out);
 	}
-	.left-button, 
+	.left-button,
 	.right-button {
 		display: none;
 	}
@@ -792,7 +792,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		margin-left: auto;
 		opacity: 0.4;
 	}
-	#page3 .cntu-button, 
+	#page3 .cntu-button,
 	#page4 .cntu-button {
 		display: inline-block;
 		float: right;
@@ -802,7 +802,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		border: none;
 	}
 	#page2 .cntu-button p,
-	#page3 .cntu-button p, 
+	#page3 .cntu-button p,
 	#page4 .cntu-button p {
 		color: #AEAEAE;
 		text-shadow: 0px 1px 0px #FFF;
@@ -812,7 +812,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		background: $background_grey;
 	}
 	#page2 .cntu-button > button,
-	#page3 .cntu-button > button, 
+	#page3 .cntu-button > button,
 	#page4 .cntu-button > button {
 		display: inline-block;
 		border: none;
@@ -824,7 +824,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		@include box-shadow(0px 1px 5px rgba(13,13,13,0.3));
 	}
 	#page2 .cntu-button > button,
-	#page3 .cntu-button span.ui-btn-inner, 
+	#page3 .cntu-button span.ui-btn-inner,
 	#page4 .cntu-button span.ui-btn-inner {
 		border: none;
 		margin: 0px;
@@ -872,7 +872,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		background: #92C4EA;
 		@include box-shadow(0px 1px 5px rgba(50,50,50,0.2));
 	}
-	#page4 .review-purchase legend, 
+	#page4 .review-purchase legend,
 	#page2 .instructions h2,
 	#page3 .instructions h2 {
 		background: #7DC99E;
@@ -954,7 +954,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		border: 1px solid #EEE;
 		@include box-shadow(0px 1px 4px rgba(13,13,13,0.15));
 	}
-	#page3 .pass-content, 
+	#page3 .pass-content,
 	#page3 .payment-content {
 		overflow: hidden;
 		background: $background_grey;
@@ -1317,7 +1317,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		text-align: center;
 	}
 	body {
-		text-align: center;	
+		text-align: center;
 		padding: 0px;
 		margin: 0px;
 		font-size: $font;
@@ -1351,7 +1351,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		background: white;
 	}
 	.ui-widget,
-	.ui-widget input { 
+	.ui-widget input {
 		font-family: Helvetica,Arial,sans serif;
 		text-align: center;
 	}
@@ -1564,7 +1564,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		color: #AEAEAE;
 		background: -moz-radial-gradient(center,ellipse cover, rgb(255,255,255) 0%,rgb(249,249,249) 85%);
 		background: -webkit-gradient(radial,center center,0px,center center,100%,color-stop(0%,rgb(255,255,255)),color-stop(85%,rgb(249,249,249)));
-		background: -webkit-radial-gradient(center,ellipse cover, rgb(255,255,255) 0%,rgb(249,249,249) 85%);	
+		background: -webkit-radial-gradient(center,ellipse cover, rgb(255,255,255) 0%,rgb(249,249,249) 85%);
 		background: -o-radial-gradient(center,ellipse cover, rgb(255,255,255) 0%,rgb(249,249,249) 85%);
 		background: -ms-radial-gradient(center,ellipse cover, rgb(255,255,255) 0%,rgb(249,249,249) 85%);
 		background: radial-gradient(ellipse at center, rgb(255,255,255) 0%,rgb(249,249,249) 85%);
@@ -1578,8 +1578,8 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		@include resp_box;
 		width: 100%;
 		padding: 0px;
-	}	
-	#map-open-icon, 
+	}
+	#map-open-icon,
 	.search-box #map-open-icon + div {
 		display: none;
 	}
@@ -1711,7 +1711,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		padding-top: 8px;
 		@include box-shadow(0px 1px 7px rgba(50,50,50,0.15));
 	}
-	#tabs-1, 
+	#tabs-1,
 	#tabs-2 {
 		position: relative;
 		z-index: 100;
@@ -1779,7 +1779,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		color: #FFF;
 		text-transform: uppercase;
 	}
-	.return, 
+	.return,
 	.oneway {
 		z-index: 0;
 		top: 5px;
@@ -1814,29 +1814,29 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 	}
 	// Tab Non-Selected Background Colour
 	.ui-widget-header .ui-state-default {
-		position: relative; 
-		top: 7px; 
-		z-index: 0; 
-		border: none; 
+		position: relative;
+		top: 7px;
+		z-index: 0;
+		border: none;
 		background: lighten($background_blue, 7%);
 	}
 	// Tab Hover Text Colour
 	.ui-state-hover a,
 	.ui-widget-content .ui-state-hover a,
 	.ui-widget-header .ui-state-hover a,
-	.ui-body-c .ui-link:hover { 
+	.ui-body-c .ui-link:hover {
 		color: #FFF;
 	}
-	// Tab Hover Background Colour	
+	// Tab Hover Background Colour
 	.ui-state-hover,
 	.ui-widget-content .ui-state-hover,
 	.ui-widget-header .ui-state-hover,
 	.ui-state-focus,
 	.ui-widget-content .ui-state-focus,
-	.ui-widget-header .ui-state-focus { 
-		border: none; 
-		top: 4px; 
-		background: lighten($background_blue, 2%); 
+	.ui-widget-header .ui-state-focus {
+		border: none;
+		top: 4px;
+		background: lighten($background_blue, 2%);
 	}
 	#map-select-cities {
 		display: none;
@@ -1844,7 +1844,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 	div#price-chart {
 		max-width: 800px;
 		margin: 0px auto;
-	}	
+	}
 	#flight-nav {
 		display: inline-block;
 		width: 100%;
@@ -1899,7 +1899,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		border: 1px solid #EEE;
 		cursor: default;
 	}
-	.price-tabs > ul:first-child > li, 
+	.price-tabs > ul:first-child > li,
 	.price-tabs > ul:last-child > li {
 		height: 100%;
 		margin-top: 8px;
@@ -2052,7 +2052,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		margin-left: auto;
 		opacity: 0.4;
 	}
-	#page3 .cntu-button, 
+	#page3 .cntu-button,
 	#page4 .cntu-button {
 		display: inline-block;
 		clear: right;
@@ -2064,7 +2064,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		@include box-shadow(0px 2px 5px rgba(13,13,13,0.15));
 	}
 	#page2 .cntu-button p,
-	#page3 .cntu-button p, 
+	#page3 .cntu-button p,
 	#page4 .cntu-button p {
 		color: #AEAEAE;
 		font-weight: 800;
@@ -2074,7 +2074,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		background: $background_grey;
 	}
 	#page2 .cntu-button > button,
-	#page3 .cntu-button > button, 
+	#page3 .cntu-button > button,
 	#page4 .cntu-button > button {
 		display: inline-block;
 		border: none;
@@ -2085,7 +2085,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		background-image: none;
 	}
 	#page2 .cntu-button > button,
-	#page3 .cntu-button span.ui-btn-inner, 
+	#page3 .cntu-button span.ui-btn-inner,
 	#page4 .cntu-button span.ui-btn-inner {
 		border: none;
 		margin: 0px;
@@ -2095,7 +2095,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		border: 1px solid #EAEAEA;
 		@include box-shadow(0px 2px 5px rgba(13,13,13,0.15));
 	}
-	#page3 div[data-role="content"] { 
+	#page3 div[data-role="content"] {
 		padding: 0px;
 	}
 	#page3 form,
@@ -2174,7 +2174,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 	#page3 .pass-seat > .ui-select > div {
 		width: 120px;
 	}
-	.pass-content, 
+	.pass-content,
 	.payment-content {
 		overflow: hidden;
 		background: #FCFCFC;
@@ -2280,7 +2280,7 @@ table.ui-datepicker-calendar > tbody td.ui-datepicker-today > a {
 		font-size: $font - 1pt;
 		margin: 2px 0px 2px 20px;
 	}
-	
+
 	#page4 .review-purchase {
 		margin-top: 10px;
 		width: 45%;
