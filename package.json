@@ -1,0 +1,23 @@
+{
+  "name": "steller",
+  "version": "0.0.0",
+  "description": "My final project from Digital Design at VFS, Jan-Dec 2012, resurrected after almost 2 years.",
+  "main": "server.js",
+  "dependencies": {
+    "deployd": "^0.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/devinmcinnis/steller.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devinmcinnis/steller/issues"
+  },
+  "homepage": "https://github.com/devinmcinnis/steller"
+}
